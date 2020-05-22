@@ -229,6 +229,8 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 
 * uploadURL：数据上传地址，格式为 `scheme://host + :port`\(不包含 `/` 后的内容\)。**scheme** 必须以 `http://` 或 `https://` 开头，**host** 只支持域名和 IP，取值长度为1-255个字符，**port** 端口号必须携带
 
+注：接口必须在初始化之后调用
+
 示例：
 
 ```objectivec
@@ -254,6 +256,7 @@ Debug 接口主要用于开发者测试。可以开/关日志，查看tag为`[an
   * `AnalysysDebugOff`：表示关闭
   * `AnalysysDebugOnly`：表示打开 Debug 模式，但该模式下发送的数据仅用于调试，不计入平台数据统计
   * `AnalysysDebugButTrack`：表示打开 Debug 模式，该模式下发送的数据可计入平台数据统计
+
 
 示例：
 
@@ -334,6 +337,8 @@ func application(_ application: UIApplication, didFinishLaunchingWithOptions lau
 * properties：页面信息，properties 最多包含 100条，且 key 以字母或 `$` 开头，只能包括字母、数字、下划线和 `$`，字母不区分大小写，`$` 开头为预置事件/属性，取值长度 1 - 99 字符
 
   且不支持乱码和中文；value 支持类型：`NSString`/`NSNumber`/`NSArray<NSString *>`/`NSSet<NSString *>`/`NSDate`/`NSURL`，若为字符串，取值长度为1-255个字符
+
+注：接口必须在初始化之后调用
 
 示例1：
 
@@ -475,6 +480,8 @@ class PageDetailViewController: UIViewController, ANSAutoPageTracker {
 * event：事件ID，以字母或 `$` 开头，只能包含字母、数字、下划线和 `$`，字母不区分大小写，`$` 开头为预置事件/属性，最大长度 99字符，不支持乱码和中文
 * properties：自定义属性，用于对事件描述。properties最多包含100对，且 key 以字母或 `$` 开头，只能包含字母、数字、下划线和 `$`，字母不区分大小写，`$` 开头为预置事件/属性，key长度 1 - 99 字符且不支持乱码和中文；value 支持类型：`NSString`/`NSNumber`/`NSArray<NSString *>`/`NSSet<NSString *>`/`NSDate`/`NSURL`，若为字符串，取值长度为1-255个字符
 
+注：接口必须在初始化之后调用
+
 示例：
 
 ```objectivec
@@ -513,6 +520,8 @@ AnalysysAgent.track("pay", properties: properties)
 ```
 
 * aliasId：需要关联的用户ID。 取值长度为1-255个字符
+
+注：接口必须在初始化之后调用
 
 示例：
 
@@ -583,6 +592,8 @@ let distinctID = AnalysysAgent.getDistinctId() as String
 * **属性值**
 
   支持部分类型：`NSString`/`NSNumber`/`NSArray<NSString *>`/`NSSet<NSString *>`/`NSDate`/`NSURL`； 若为字符串，取值长度为1-255个字符； 若为数组或集合，则最多包含 100条，且 key 约束条件与[属性名称](./#userPropertyKey)一致，value 取值长度为1-255个字符
+
+注：用户属性相关接口必须在初始化之后调用
 
 #### 设置用户属性
 
@@ -1074,6 +1085,8 @@ let presetProperties = AnalysysAgent.getPresetProperties()
 + (void)reset;
 ```
 
+注：接口必须在初始化之后调用
+
 示例：清除本地现有的设置，包括id和通用属性
 
 ```objectivec
@@ -1102,6 +1115,8 @@ AnalysysAgent.reset()
 
 * visitorDebugURL：websocket服务器地址，格式为 `scheme://host + :port`\(不包含 `/` 后的内容\)。**scheme** 必须以 `ws://` 或 `wss://` 开头，**host** 只支持域名和 IP，取值长度为1-255个字符，**port** 端口号必须携带
 
+注：接口必须在初始化之后调用
+
 示例：
 
 ```objectivec
@@ -1124,6 +1139,8 @@ AnalysysAgent.setVisitorDebugURL("ws://growth.analysys.cn:9091")
 ```
 
 * configURL：请求埋点配置的服务器地址，格式：`http://host:port` 或 `https://host:port`
+
+注：接口必须在初始化之后调用
 
 示例：
 
